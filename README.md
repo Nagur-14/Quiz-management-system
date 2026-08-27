@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # QuizPit — a Kahoot-style live quiz app
 
 A full-stack, real-time quiz game. A host builds a quiz, launches a game, and
@@ -162,3 +163,7 @@ forwarded, since Socket.io needs them).
 - Multiple-correct-answer and true/false question types
 - Public quiz gallery / cloning someone else's quiz
 - Per-player (not just per-team) scoring, if you want solo play too
+=======
+# Quiz-management-system
+online quiz management system to attend a online quiz by a url.
+>>>>>>> e03038fc99c6c1fa48a9cd3607dcb0b1aa749cfa
