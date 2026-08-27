@@ -1,0 +1,13 @@
+{
+  "name": "quiz-app",
+  "version": "1.0.0",
+  "description": "A full-stack, real-time quiz game. A host builds a quiz, launches a game, and gets a 6-digit code. Players open the site on any device (no account needed), enter the code and a team name, and play live — questions, timer, scoring, and leaderboard all sync instantly over WebSockets.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

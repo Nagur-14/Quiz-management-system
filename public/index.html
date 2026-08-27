@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>QuizPit — Join a game</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="/">
+    <span class="mark">Q</span> QuizPit
+  </a>
+  <a class="btn btn-secondary" href="/admin/login.html">Host login</a>
+</div>
+
+<main class="page">
+  <div class="container stack">
+
+    <!-- SCREEN 1: enter game PIN -->
+    <section id="screen-join" class="card stack">
+      <div class="center stack" style="gap:6px;">
+        <h1>Enter game code</h1>
+        <p>Ask your host for the PIN shown on their screen.</p>
+      </div>
+      <input id="input-code" class="pin-input" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="off" />
+      <p id="join-error" class="error-text center"></p>
+      <button id="btn-go-name" class="btn btn-primary btn-block btn-lg">Enter</button>
+    </section>
+
+    <!-- SCREEN 2: enter team name -->
+    <section id="screen-name" class="card stack hidden">
+      <div class="center stack" style="gap:6px;">
+        <h1 id="quiz-title-preview">Join game</h1>
+        <p>Pick a team name — this is what everyone will see on the leaderboard.</p>
+      </div>
+      <input id="input-team" maxlength="24" placeholder="e.g. The Brainiacs" autocomplete="off" />
+      <p id="name-error" class="error-text center"></p>
+      <div class="row">
+        <button id="btn-back-code" class="btn btn-secondary">Back</button>
+        <button id="btn-join" class="btn btn-primary grow btn-lg">Join game</button>
+      </div>
+    </section>
+
+    <!-- SCREEN 3: lobby / waiting room -->
+    <section id="screen-lobby" class="card stack hidden center">
+      <span class="badge live">● in lobby</span>
+      <h2 id="lobby-quiz-title">Quiz</h2>
+      <p>You're in, <strong id="lobby-team-name"></strong>! Waiting for the host to start&hellip;</p>
+      <div class="spinner" style="margin: 8px auto;"></div>
+      <div class="stack" style="text-align:left;">
+        <p class="muted" style="font-size:0.85rem;">Teams in the lobby (<span id="lobby-count">0</span>)</p>
+        <div id="lobby-teams" class="row" style="flex-wrap:wrap; gap:8px;"></div>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: question -->
+    <section id="screen-question" class="card stack hidden">
+      <div class="row between">
+        <span class="badge" id="question-progress">Q1</span>
+        <div class="timer-ring" id="timer-ring">
+          <svg viewBox="0 0 64 64"><circle class="track" cx="32" cy="32" r="27"/><circle class="progress" id="timer-circle" cx="32" cy="32" r="27"/></svg>
+          <span id="timer-text">20</span>
+        </div>
+      </div>
+      <h2 id="question-text">Question text</h2>
+      <div id="answer-grid" class="answer-grid"></div>
+      <p id="answer-status" class="center muted"></p>
+    </section>
+
+    <!-- SCREEN 5: per-question result -->
+    <section id="screen-result" class="card stack hidden center">
+      <div id="result-icon" style="font-size:2.6rem;">🎯</div>
+      <h2 id="result-heading">Correct!</h2>
+      <p id="result-points"></p>
+      <div class="card-flat">
+        <p class="muted" style="font-size:0.85rem; margin-bottom:4px;">Your total score</p>
+        <div style="font-family:var(--font-mono); font-size:1.8rem; font-weight:700; color:var(--lime);" id="result-score">0</div>
+      </div>
+      <p class="muted">Waiting for the host to continue&hellip;</p>
+    </section>
+
+    <!-- SCREEN 6: final leaderboard -->
+    <section id="screen-final" class="card stack hidden">
+      <h2 class="center">🏆 Final results</h2>
+      <div id="final-leaderboard" class="leaderboard"></div>
+      <button id="btn-play-again" class="btn btn-secondary btn-block">Join another game</button>
+    </section>
+
+  </div>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/play.js"></script>
+</body>
+</html>

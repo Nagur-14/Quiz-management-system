@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QuizPit — Dashboard</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="/">
+    <span class="mark">Q</span> QuizPit
+  </a>
+  <div class="row">
+    <span class="muted" id="admin-name"></span>
+    <button id="btn-logout" class="btn btn-secondary">Log out</button>
+  </div>
+</div>
+
+<main class="page">
+  <div class="container-wide stack">
+
+    <div class="row" style="gap:16px; flex-wrap:wrap;">
+      <div class="card-flat grow">
+        <p class="muted" style="font-size:0.8rem;">Quizzes</p>
+        <h2 id="stat-quizzes">0</h2>
+      </div>
+      <div class="card-flat grow">
+        <p class="muted" style="font-size:0.8rem;">Games hosted</p>
+        <h2 id="stat-sessions">0</h2>
+      </div>
+      <div class="card-flat grow">
+        <p class="muted" style="font-size:0.8rem;">Teams reached</p>
+        <h2 id="stat-players">0</h2>
+      </div>
+    </div>
+
+    <div class="card stack">
+      <div class="row between">
+        <h1>Your quizzes</h1>
+        <a class="btn btn-primary" href="/admin/editor.html">+ New quiz</a>
+      </div>
+      <div id="quiz-list" class="stack"></div>
+      <p id="quiz-empty" class="muted hidden">No quizzes yet — create your first one to start hosting games.</p>
+    </div>
+
+  </div>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/admin-dashboard.js"></script>
+</body>
+</html>

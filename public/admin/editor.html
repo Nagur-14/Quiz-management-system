@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QuizPit — Quiz editor</title>
+<link rel="stylesheet" href="/css/style.css" />
+<style>
+  .question-card { border: 1.5px solid var(--border); border-radius: var(--radius-sm); padding: 18px; background: var(--surface-alt); }
+  .option-row { display:flex; align-items:center; gap:10px; }
+  .option-row input[type="text"] { flex:1; }
+  .option-row input[type="radio"] { width:20px; height:20px; accent-color: var(--lime); }
+  .qmeta { display:flex; gap:14px; flex-wrap:wrap; }
+  .qmeta .field { min-width: 140px; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="/">
+    <span class="mark">Q</span> QuizPit
+  </a>
+  <a class="btn btn-secondary" href="/admin/dashboard.html">Back to dashboard</a>
+</div>
+
+<main class="page">
+  <div class="container-wide stack">
+
+    <div class="card stack">
+      <h1 id="page-title">Create a quiz</h1>
+      <div class="field">
+        <label for="quiz-title">Title</label>
+        <input id="quiz-title" placeholder="e.g. World Capitals Trivia" />
+      </div>
+      <div class="field">
+        <label for="quiz-desc">Description (optional)</label>
+        <textarea id="quiz-desc" rows="2" placeholder="What's this quiz about?"></textarea>
+      </div>
+    </div>
+
+    <div id="questions-container" class="stack"></div>
+
+    <button id="btn-add-question" class="btn btn-secondary btn-block">+ Add question</button>
+
+    <div class="row between" style="position:sticky; bottom:16px;">
+      <p id="editor-error" class="error-text"></p>
+      <button id="btn-save" class="btn btn-primary btn-lg">Save quiz</button>
+    </div>
+
+  </div>
+</main>
+
+<template id="question-template">
+  <div class="question-card stack">
+    <div class="row between">
+      <strong class="q-index"></strong>
+      <button class="btn btn-danger btn-remove-q">Remove</button>
+    </div>
+    <div class="field">
+      <label>Question text</label>
+      <input type="text" class="q-text" placeholder="What's the capital of Japan?" />
+    </div>
+    <div class="options-list stack"></div>
+    <button class="btn btn-secondary btn-add-option">+ Add option</button>
+    <div class="qmeta">
+      <div class="field">
+        <label>Time limit (seconds)</label>
+        <input type="number" class="q-time" min="5" max="120" value="20" />
+      </div>
+      <div class="field">
+        <label>Points</label>
+        <input type="number" class="q-points" min="0" step="50" value="1000" />
+      </div>
+    </div>
+  </div>
+</template>
+
+<template id="option-template">
+  <div class="option-row">
+    <input type="radio" name="" class="opt-correct" />
+    <input type="text" class="opt-text" placeholder="Option text" />
+    <button class="btn btn-danger btn-remove-opt">✕</button>
+  </div>
+</template>
+
+<script src="/js/api.js"></script>
+<script src="/js/quiz-editor.js"></script>
+</body>
+</html>

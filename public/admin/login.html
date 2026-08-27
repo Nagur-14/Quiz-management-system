@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QuizPit — Host login</title>
+<link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <a class="brand" href="/">
+    <span class="mark">Q</span> QuizPit
+  </a>
+  <a class="btn btn-secondary" href="/">Play a game</a>
+</div>
+
+<main class="page">
+  <div class="container">
+    <div class="card stack">
+      <h1 id="form-title">Host login</h1>
+      <p id="form-subtitle">Log in to create quizzes and host live games.</p>
+
+      <div class="stack">
+        <div class="field hidden" id="field-name">
+          <label for="input-name">Name</label>
+          <input id="input-name" placeholder="Jane Host" autocomplete="name" />
+        </div>
+        <div class="field">
+          <label for="input-email">Email</label>
+          <input id="input-email" type="email" placeholder="you@example.com" autocomplete="email" />
+        </div>
+        <div class="field">
+          <label for="input-password">Password</label>
+          <input id="input-password" type="password" placeholder="••••••••" autocomplete="current-password" />
+        </div>
+        <p id="form-error" class="error-text"></p>
+        <button id="btn-submit" class="btn btn-primary btn-block btn-lg">Log in</button>
+        <p class="center muted">
+          <span id="toggle-prompt">Don't have an account?</span>
+          <button id="btn-toggle" class="link-btn">Create one</button>
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script src="/js/api.js"></script>
+<script src="/js/admin-login.js"></script>
+</body>
+</html>
